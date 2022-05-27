@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -8,29 +8,31 @@ import { useForm } from "react-hook-form";
 const Login = () => {
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const navigate = useNavigate()
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
     const [
       signInWithEmailAndPassword,
       user,
       loading,
       error,
     ] = useSignInWithEmailAndPassword(auth);
+    
     let errorLogin;
+    let cheqLoading;
     if (error || gerror) {
       errorLogin = <p className='text-red-600'>{error ?.message || gerror ?.message }</p>
     }
     if (loading || gloading) {
-      return <p>Loading...</p>;
+        cheqLoading = <div className='ml-auto mr-auto mt-2'><button class="btn btn-square  loading"></button></div>;
     }
-    if (user && guser) {
-      return (
-        <div>
-          <p>Signed In User: {user.email}</p>
-        </div>
-      );
+    if (user || guser) {
+        console.log('hi')
+        navigate(from, { replace: true });
     }
     const onSubmit = data => {
-        console.log(data);
-        signInWithEmailAndPassword(data.email , data.password)
+        console.log(data.email);
+        signInWithEmailAndPassword(data.email , data.password)   
     }
     
     return (
@@ -39,7 +41,6 @@ const Login = () => {
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Login</h1>
-
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -66,8 +67,8 @@ const Login = () => {
                                     <button className="btn btn-primary">Login</button>
                                 </div>
                                 {errorLogin}
+                                {cheqLoading}
                                 <div className="divider">OR</div>
-
                             </div>
                         </form>
                         <div className="form-control p-4 ">

@@ -1,6 +1,21 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 
 const Product = ({ product }) => {
+    const navigate = useNavigate()
+    const [user] = useAuthState(auth);
+    const hendleOrder = ()=>{
+        if(!user){
+            navigate('/login')
+        }
+        else{
+            navigate('/order')
+        }
+        
+        
+    }
     const { name, price, img, quantity, minQuantity, text } = product
     return (
         <div className=" justify-self-center card card-compact w-96 shadow-xl bg-slate-700">
@@ -19,7 +34,7 @@ const Product = ({ product }) => {
                     <input type="radio" name="rating-5" className="mask mask-star-2 bg-orange-400" />
                 </div>
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
+                    <button onClick={()=> hendleOrder()} className="btn btn-primary">Buy Now</button>
                 </div>
             </div>
 
