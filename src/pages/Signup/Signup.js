@@ -1,16 +1,19 @@
 
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
+import useToken from '../../Hooks/useToken';
 
 
 const Signup = () => {
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const location = useLocation()
+    let from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
         user,
@@ -19,6 +22,7 @@ const Signup = () => {
     ] = useCreateUserWithEmailAndPassword(auth);
     const [updateProfile] = useUpdateProfile(auth)
     const navigate = useNavigate()
+    const [token] = useToken(user || guser)
     let errorLogin;
     let cheqLoading;
     console.log(user)
@@ -29,8 +33,8 @@ const Signup = () => {
     if (loading || gloading) {
         cheqLoading = <div className='ml-auto mr-auto mt-2'><button className="btn btn-square  loading"></button></div>;
     }
-    if (user && guser) {
-        console.log(guser.names)
+    if (token) {
+        navigate(from, { replace: true });
         return (
             <div>
                 <p>Signed In User: {user.email || guser.email}</p>
