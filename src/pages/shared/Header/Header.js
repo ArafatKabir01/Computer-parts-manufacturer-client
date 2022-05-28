@@ -15,7 +15,8 @@ const Header = () => {
         <li><Link to='/about'>About</Link></li>
         <li><Link to='/order'>Order</Link></li>
         <li>{user ? <></> : <Link to='/login'>Login</Link>}</li>
-        <li>{user ? <button onClick={logOut} class="btn btn-outline btn-warning">Log Out</button> : <Link to='/signup'>SignUp</Link>}</li>
+        <li>{user ? <Link to='/dashboard' className='text-rose-700 font-bold'>Dashboard</Link> : <></> }</li>
+        <li>{user ? <button onClick={logOut} className="btn btn-outline btn-warning ml-4">Log Out</button> : <Link to='/signup'>SignUp</Link>}</li>
     </>   
     
     return (

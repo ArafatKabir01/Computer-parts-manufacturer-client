@@ -21,13 +21,12 @@ const Login = () => {
     let errorLogin;
     let cheqLoading;
     if (error || gerror) {
-      errorLogin = <p className='text-red-600'>{error ?.message || gerror ?.message }</p>
+      errorLogin = <p className='text-red-600'>{error?.message || gerror?.message }</p>
     }
     if (loading || gloading) {
-        cheqLoading = <div className='ml-auto mr-auto mt-2'><button class="btn btn-square  loading"></button></div>;
+        cheqLoading = <div className='ml-auto mr-auto mt-2'><button className="btn btn-square  loading"></button></div>;
     }
     if (user || guser) {
-        console.log('hi')
         navigate(from, { replace: true });
     }
     const onSubmit = data => {

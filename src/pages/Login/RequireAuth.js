@@ -7,7 +7,7 @@ const RequireAuth = ({children}) => {
     const [user, loading] = useAuthState(auth);
     const location = useLocation()
     if(loading){
-        return <div className='ml-auto mr-auto mt-2'><button class="btn btn-square  loading"></button></div>
+        return <div className='ml-auto mr-auto mt-2'><button className="btn btn-square  loading"></button></div>
     }
     if (!user) {
         return <Navigate to="/login" state={{ from: location }} replace />;
