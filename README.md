@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-this is project line link [Live link](https://computer-builder-f457e.web.app/).
+This is project live link [Live link](https://computer-builder-f457e.web.app/).
 
 ## Available Scripts
 
