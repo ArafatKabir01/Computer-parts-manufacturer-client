@@ -14,6 +14,7 @@ import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import RequireAuth from './pages/Login/RequireAuth';
 import Order from './pages/Order/Order';
+import PagenotFound from './pages/PagenotFound';
 import Purchase from './pages/Purchase/Purchase';
 
 import Header from './pages/shared/Header/Header';
@@ -28,6 +29,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
+        <Route path='*' element={<PagenotFound></PagenotFound>}></Route>
         <Route path='/product' element={<AllProducts></AllProducts>}></Route>
         <Route path='/order/:productid' element={
         <RequireAuth>
