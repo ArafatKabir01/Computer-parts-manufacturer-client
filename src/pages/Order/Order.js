@@ -35,7 +35,7 @@ const Order = () => {
             .then(result => console.log(result))
             
         if(data.productName && data.quantity){
-            navigate('/purchase')
+            navigate('/dashboard')
         }
         
     };

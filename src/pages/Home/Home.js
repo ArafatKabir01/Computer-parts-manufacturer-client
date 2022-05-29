@@ -3,6 +3,7 @@ import Footer from '../shared/Footer/Footer';
 import Banner from './Banner';
 import Business from './Business';
 import ContractUs from './ContractUs';
+import Location from './Location';
 import Products from './Products';
 import Reviews from './Reviews';
 
@@ -14,6 +15,7 @@ const Home = () => {
             <Business></Business>
             <Reviews></Reviews>
             <ContractUs></ContractUs>
+            <Location></Location>
             <Footer></Footer>
             
         </div>
