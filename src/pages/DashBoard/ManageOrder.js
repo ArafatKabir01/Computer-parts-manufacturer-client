@@ -17,8 +17,8 @@ const ManageOrder = () => {
                         <tr>
                             <th>Component Name</th>
                             <th>Total Quantity</th>
-                            <th>Price Per Unit</th>
                             <th>Email</th>
+                            <th>Price Per Unit</th>
                             <th>Total Amount</th>
                             <th></th>
                             <th></th>
