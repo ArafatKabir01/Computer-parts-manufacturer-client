@@ -29,7 +29,7 @@ const ManageProduct = () => {
     }
     return (
         <div>
-            <h2 className='p-5'>MyOrder {products.length}</h2>
+            <h2 className='p-5'>ALL PRODUCT {products.length}</h2>
             <div class="overflow-x-auto">
                 <table class="table w-full">
 

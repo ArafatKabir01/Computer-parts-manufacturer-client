@@ -33,6 +33,7 @@ const MyOrder = () => {
 
         }
     }
+
     return (
         <div>
             <h2 className='p-5'>MyOrder {orders.length}</h2>
@@ -51,7 +52,7 @@ const MyOrder = () => {
                     </thead>
                     <tbody>
                         {
-                            orders.map(order => <tr class="hover"><td>{order.productName}</td><td>{order.quantity}</td><td>{order.price}</td><td>{order.price * order.quantity}</td><td><button onClick={() => handleDelete(order._id)} className="btn btn-primary">Cancel</button></td></tr>)
+                            orders.map(order => <tr class="hover"><td>{order.productName}</td><td>{order.quantity}</td><td>{order.price}</td><td>{order.price * order.quantity}</td><td><button onClick={()=>handleDelete(order._id)}  className="btn btn-primary">Cancel</button></td></tr>)
 
                         }
                     </tbody>

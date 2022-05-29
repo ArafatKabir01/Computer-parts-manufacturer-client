@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import AllProducts from './pages/AllProduct/AllProducts';
+import Blog from './pages/Blog/Blog';
 import AddProduct from './pages/DashBoard/AddProduct';
 import Alluser from './pages/DashBoard/Alluser';
 import DashBoard from './pages/DashBoard/DashBoard';
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/signup' element={<Signup></Signup>}></Route>
         <Route path='/product' element={<AllProducts></AllProducts>}></Route>
         <Route path='/order/:productid' element={
