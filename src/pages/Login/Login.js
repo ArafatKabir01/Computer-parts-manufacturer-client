@@ -4,10 +4,13 @@ import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
+import useToken from '../../Hooks/useToken';
+import { useEffect } from 'react';
 
 const Login = () => {
     const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
+    
     const navigate = useNavigate()
     const location = useLocation()
     let from = location.state?.from?.pathname || "/";
@@ -17,7 +20,7 @@ const Login = () => {
       loading,
       error,
     ] = useSignInWithEmailAndPassword(auth);
-    
+    const [token] = useToken(user || guser)
     let errorLogin;
     let cheqLoading;
     if (error || gerror) {
@@ -26,9 +29,12 @@ const Login = () => {
     if (loading || gloading) {
         cheqLoading = <div className='ml-auto mr-auto mt-2'><button className="btn btn-square  loading"></button></div>;
     }
-    if (user || guser) {
-        navigate(from, { replace: true });
-    }
+    useEffect(()=>{
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    },[token , from , navigate])
+    
     const onSubmit = data => {
         console.log(data.email);
         signInWithEmailAndPassword(data.email , data.password)   

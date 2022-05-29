@@ -37,7 +37,7 @@ const Signup = () => {
         navigate(from, { replace: true });
         return (
             <div>
-                <p>Signed In User: {user.email || guser.email}</p>
+                <p>Signed In User: {user?.email || guser?.email}</p>
 
             </div>
         );
