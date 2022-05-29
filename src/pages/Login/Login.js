@@ -32,9 +32,12 @@ const Login = () => {
     useEffect(()=>{
         if (token) {
             navigate(from, { replace: true });
+            
         }
     },[token , from , navigate])
-    
+    if(user){
+        navigate(from, { replace: true });
+    }
     const onSubmit = data => {
         console.log(data.email);
         signInWithEmailAndPassword(data.email , data.password)   
