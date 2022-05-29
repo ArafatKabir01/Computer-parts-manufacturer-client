@@ -7,7 +7,7 @@ const Reviews = () => {
     useEffect(()=>{
         fetch('http://localhost:5000/reviews')
         .then(res => res.json())
-        .then(data => setReviews(data.reverse().slice(10)))
+        .then(data => setReviews(data))
     },[])
 
     
