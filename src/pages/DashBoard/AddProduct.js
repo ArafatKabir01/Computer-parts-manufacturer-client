@@ -7,7 +7,7 @@ const AddProduct = () => {
         console.log(data)
         const proceed = window.confirm(`you added ${data.name}?`)
         if(proceed){
-            const url = `http://localhost:5000/parts`
+            const url = `https://floating-sea-12317.herokuapp.com/parts`
             fetch(url,{
                 method:'POST',
                 headers:{'content-type':'application/json'},

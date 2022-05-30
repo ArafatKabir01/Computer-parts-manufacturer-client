@@ -7,7 +7,7 @@ const MyOrder = () => {
     const [user] = useAuthState(auth)
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:5000/myorders?email=${user.email}`, {
+        fetch(`https://floating-sea-12317.herokuapp.com/myorders?email=${user.email}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -20,7 +20,7 @@ const MyOrder = () => {
         const proceed = window.confirm('are you sure?')
         console.log(id)
         if (proceed) {
-            const url = `http://localhost:5000/orderParts/${id}`
+            const url = `https://floating-sea-12317.herokuapp.com/orderParts/${id}`
             fetch(url, {
                 method: "DELETE"
             })

@@ -6,7 +6,7 @@ const ManageProduct = () => {
     const [user] = useAuthState(auth)
     const [products, setproducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/parts')
+        fetch('https://floating-sea-12317.herokuapp.com/parts')
         .then(res => res.json())
         .then(data => setproducts(data))
     }, [user])
@@ -14,7 +14,7 @@ const ManageProduct = () => {
         const proceed = window.confirm('are you sure?')
         console.log(id)
         if (proceed) {
-            const url = `http://localhost:5000/allProduct/${id}`
+            const url = `https://floating-sea-12317.herokuapp.com/allProduct/${id}`
             fetch(url, {
                 method: "DELETE"
             })

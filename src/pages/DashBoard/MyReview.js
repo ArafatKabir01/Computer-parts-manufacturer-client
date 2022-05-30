@@ -7,7 +7,7 @@ const MyReview = () => {
         console.log(data)
         const proceed = window.confirm(`you added ${data.name}?`)
         if(proceed){
-            const url = `http://localhost:5000/review`
+            const url = `https://floating-sea-12317.herokuapp.com/review`
             fetch(url,{
                 method:'POST',
                 headers:{'content-type':'application/json'},

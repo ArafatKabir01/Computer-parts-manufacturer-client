@@ -15,7 +15,7 @@ const Order = () => {
     const [detailsProduct, setDtailsProduct] = useState({})
     useEffect(() => {
         console.log(productid)
-        const url = `http://localhost:5000/order/${productid}`
+        const url = `https://floating-sea-12317.herokuapp.com/order/${productid}`
         fetch(url)
             .then(res => res.json())
             .then(data => setDtailsProduct(data))
@@ -24,7 +24,7 @@ const Order = () => {
     const { register, handleSubmit , formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
-        const url = `http://localhost:5000/userorder`
+        const url = `https://floating-sea-12317.herokuapp.com/userorder`
             fetch(url,{
                 method:'POST',
                 headers:{'content-type':'application/json'},
