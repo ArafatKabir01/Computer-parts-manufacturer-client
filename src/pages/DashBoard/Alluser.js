@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 
 const Alluser = () => {
-    const { data: users, role, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user', {
+    const { data: users, role, isLoading, refetch } = useQuery('users', () => fetch('https://floating-sea-12317.herokuapp.com/user', {
         method: 'GET',
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -15,7 +15,7 @@ const Alluser = () => {
     }
     // const { email, role } = user;
     const makeAdmin = user => {
-        fetch(`http://localhost:5000/user/admin/${user.email}`, {
+        fetch(`https://floating-sea-12317.herokuapp.com/user/admin/${user.email}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('accessToken')}`
