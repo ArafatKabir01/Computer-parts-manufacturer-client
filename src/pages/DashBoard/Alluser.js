@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 
 
 const Alluser = () => {
-    const { data: users, role, isLoading, refetch } = useQuery('users', () => fetch('https://floating-sea-12317.herokuapp.com/user', {
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://floating-sea-12317.herokuapp.com/user', {
         method: 'GET',
         headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
